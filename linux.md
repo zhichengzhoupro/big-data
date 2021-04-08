@@ -71,5 +71,16 @@ halt       挂起
 `````
 uname     显示系统信息
 file      检测文件类型
-tar       压缩 解压缩 war web archive， jar java archive 
+tar       归档命令 war web archive， jar java archive 
+tar  -xvzf 使用gzip 解压缩
+ -x  extract 抽取 从存档展开文件
+ -f  文件
+ -z  用gzip对存档压缩或解压
+ -v  verbose 详细显示处理的文件
+ -c   创建新的文档
+ -r | --append 附加到存档结尾
+
+ gzip  压缩文件
+ gunzip 解压缩文件
+
 `````
