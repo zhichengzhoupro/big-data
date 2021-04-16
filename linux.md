@@ -79,8 +79,78 @@ tar  -xvzf 使用gzip 解压缩
  -v  verbose 详细显示处理的文件
  -c   创建新的文档
  -r | --append 附加到存档结尾
+ -t  查看归档文件的内容
 
  gzip  压缩文件
  gunzip 解压缩文件
+ cp   拷贝命令
+ xargs 将管道的输出内容合并成一行数据，使用空格分割
 
+ ln  创建链接文件
+   硬链接 创建两个一模一样的文件 相互关联的
+   -s 符号链接  创建
+
+dirname 查看文件所在的目录
+basename 输出文件的基本名 去掉路径和 后缀
+cd -P 即使遇到超链接 也通过物理路径过去
 `````
+
+## 设备管理
+`````
+mount /dev/设备块文件 /目标文件夹
+unmount /目标文件夹  解除挂载
+fdisk -l 磁盘管理
+df 查看磁盘的使用情况 显示文件系统挂载在了哪个文件夹下面 
+df -ah 
+`````
+
+## 作业管理
+``````
+jobs  显示后台的作业
+kill %n 杀死进程
+ps   显示进程
+cut   对每行文本进行剪切处理 cut -c 1-3 hello.txt hello文本中的每一行只显示第一个到第三个字符 
+``````
+
+# SHELL
+`````
+$? 刚才命令返回的结果 0:成功  ！0 失败
+$# 获取参数个数
+$n 获取第几个参数
+$@ 获得所有参数
+shift  向左移动参数
+
+命令组合
+a && b a成功后再执行b
+a || b a执行失败之后再执行b
+a；b  a执行之后再执行b
+
+命令 &  将命令放到后台执行 不占用主线程
+
+netcat
+做tcp ip ，udp通信
+ServerSocket server，listener
+Socket connection，pocket
+
+nc 进行聊天
+nc -l port  监听本机端口号
+nc ip port  启动客户端 🔗 到IP地址 port
+
+nc 传递文件
+nc -l 8888 > test.txt 接受内容重定向到文件
+nc ip 8888 < test.txt 接受文件内容 发送
+
+nc 检测端口是否开通
+nc -v -w 2
+`````
+
+## 修改Ubuntu软件园列表
+* /etc/apt/souce.list
+* sudo apt-get update
+* apt-get upgrade
+
+## VM 几种网络设置方式
+* 桥接 briadge 使用宿主机的网卡，通过网关， 可以联通其他的宿主机，但是如果网关挂了，就无法与宿主通信
+* NAT Network address translation 网络地址转换 宿主机给自己的虚拟机一个独立的网段 虚拟机无法与其他的和宿主机在同一个网段的机器通信
+* 配置静态ip
+   - 
