@@ -1,3 +1,6 @@
+
+
+
 file="./application.properties"
 
 if [ -f "$file" ]
