@@ -126,4 +126,157 @@ echo "${ass_Array2[@]}"
 echo "${!ass_Array2[@]}"
 `````
 
+## shell 流程控制语句
+
+### 数学比较运算
+
+-eq 等于
+-gt 大于
+-lt 小于
+-ge 大于 等于
+-le 小于 等于
+-ne 不等于
+`````
+ test 1 -eq 2; echo $?
+
+ 0 表示true 1 表示false 
+`````
+
+### 文件判断比较
+`````
+-d 文件是否存在且为目录
+-e 文件是否存在
+-f 文件是否存在且为文件
+-r 文件是否存在且为可读
+-s 文件是否存在且不为空
+-w 文件是否存在且可写
+-x 文件是否存在且可执行
+-O 文件是否存在且为当前用户拥有
+-G 文件是否存在且默认组为当前用户组
+
+file1 -nt file2 文件1 是否比文件2 新
+file1 -ot 发ile 文件1 是否比文件2 旧 
+`````
+
+### 字符串判断比较
+`````
+==
+!=
+-n 字符串长度是否大于0
+-z 字符串长度是否为0
+`````
+
+### 逻辑运算
+`````
+&&
+||
+! 
+`````
+
+
+## if 语法
+
+if [ condition ] then 。。。。。 fi condition 为以上所有运算
+
+`````
+if [ ! -d $path ] 
+ then 
+  mkdir $path
+fi
+
+if [ ! -d $path ] 
+ then 
+  mkdir $path
+ elif [ xxxx ]
+   then
+fi    
+
+
+if((数学表达式));then  
+
+if [[ 字符串匹配 ]];then
+if [[ $s ~ r* ]];then 变量是否匹配r开头 
+`````
+
+## for 语法
+
+`````
+  for var in var1 var2 var3
+    do
+     .....
+  done
+
+  for v in `seq 1 9`
+    do
+     echo v
+  done
+`````
+
+`````
+ C语言的写法
+
+  for ((变量;条件;自增减运算))
+    do
+     .....
+  done
+
+  for ((i=1;i<10;i--))
+    do
+     echo $i
+  done
+    for ((i=1,x=6;i<10;i--,x++))
+    do
+     echo $i
+  done
+`````
+
+ `````
+ for 的赋值方式
+直接赋值
+for var in 1 2 3 4
+ do
+  .....
+done
+
+命令负值
+for var in `seq 1 9`
+ do
+  ....
+done
+
+字符串赋值
+for var in kate\'s bag is beatiful
+  do
+   ...
+done
+
+数组赋值
+
+declare -A ass_Array2
+
+ass_Array2=([name]='fang' [age]=10)
+
+for i in ${ass_Array2[@]}
+ do
+  echo $i
+done
+`````
+
+### 循环控制
+
+#### sleep
+
+让循环休眠 x 秒钟
+
+sleep x  
+
+##### continue
+跳到下一次循环
+
+#### break
+跳出循环
+
+break 1  跳出本循环
+break 2  直接跳出外循环
+
 
